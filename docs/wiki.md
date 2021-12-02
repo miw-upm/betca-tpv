@@ -324,9 +324,7 @@ Para la autenticación, Slack funciona mediante api-key en la url de la petició
 Mostramos abajo un ejemplo sencillo, metiendo en el cuerpo el mensaje.
 `POST https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
 ```json
-{
-    "text": "Hello, world."
-}
+{ "text": "Hello, world." }
 ```
 
 ## `story: Staff`
