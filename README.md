@@ -154,6 +154,8 @@ Indicar como texto en la subida:
 * Valor del nombre que aparece en los commits del autor.
 * Número del último commit y fecha del mismo (dÍa-hora).
 * Tiempo total estimado, tiempo total real utilizado.
+* Número de líneas de código: Angular & Spring.
+* Producción: número de líneas/hora: Angular & Spring.
 
 # :book: Documentación del proyecto
 > Este proyecto es la práctica TPV desarrollada de forma colaborativa por todos los alumnos. Se parte de la versión `core`,
