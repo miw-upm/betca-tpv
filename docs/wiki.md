@@ -3,7 +3,7 @@
 ### [Máster en Ingeniería Web por la U.P.M.](http://miw.etsisi.upm.es)
 ---
 
-# Curso 2020-21. Enunciado de prácticas
+# Curso 2021-22. Enunciado de prácticas
 
 ## `story: TPV`
 > **Autor: Jesús Bernal**  
@@ -77,7 +77,7 @@ Registrar movimientos de caja: ingresos o extracciones de dinero de la caja. Per
 
 Quejas de productos comprados. Son quejas por productos que no son satisfactorios, porque no cumplen las espectativas.
 ```typescript
-Model Complaint{reference:String; registrationDate:LocalDate; mobile:String; barcode:String; description:String, state:Opened|Closed; reply:String;}
+class Complaint{reference:String; registrationDate:LocalDate; mobile:String; barcode:String; description:String, state:Opened|Closed; reply:String;}
 ```
 - [ ] El cliente, una vez logeado, puede poner una reclamación.
 - [ ] El cliente puede ver sus quejas, y puede actualizar la descripción. También puede eliminarla si se arrepiente.
@@ -92,7 +92,7 @@ Model Complaint{reference:String; registrationDate:LocalDate; mobile:String; bar
 Gestionar una línea de crédito de clientes especiales.
 ```typescript
 class Credit{user:User; creationDate:LocalDate; sales:CreditSale[] }
-Model CreditSale{ticket:Ticket, payed:Boolean}
+class CreditSale{ticket:Ticket, payed:Boolean}
 ```
 - [ ] En el menú de administración, crear una línea de crédito para un usuario.
 - [ ] En el menú de administración, se podrá listar los usuarios con deuda, y su deuda total.
@@ -324,7 +324,9 @@ Para la autenticación, Slack funciona mediante api-key en la url de la petició
 Mostramos abajo un ejemplo sencillo, metiendo en el cuerpo el mensaje.
 `POST https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
 ```json
-{ "text": "Hello, world." }
+{
+    "text": "Hello, world."
+}
 ```
 
 ## `story: Staff`
