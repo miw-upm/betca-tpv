@@ -66,7 +66,7 @@ betca-tpv-angular> npm install
       y el motor de Postgresql: `spring.datasource.url=jdbc:postgresql://localhost:5432/tpv`
       2. Spring. Ejecutar mediante linea de comando en ambos proyectos: `> ./mvnw clean spring-boot:run`  
       3. Python. Ejecutar mediante linea de comando: `> uvicorn src.main:app --reload --port 8083`
-      4. Angular. Ejecutar mediante linea de comand: `> ng serve`, o ejecución de Angular con los back-end en Heroku: `> ng serve --prod`
+      4. Angular. Ejecutar mediante linea de comand: `> ng serve`, o ejecución de Angular con los back-end en Heroku: `> ng serve --configuration production`
       5. Navegador. Se arranca en la URL: http://localhost:4200/
 
 # :page_with_curl: Enunciado de la práctica
