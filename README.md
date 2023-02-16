@@ -56,7 +56,7 @@ betca-tpv-angular> npm install
 2. Importar el proyecto `betca-tpv-angular` mediante **WebStorm** 
    * **Open**, y seleccionar la carpeta del proyecto.
 3. Importar los proyectos `betca-tpv-user` & `betca-tpv-core` mediante **IntelliJ** 
-   **Open**, y seleccionar la carpeta del proyecto.
+   * **Open**, y seleccionar la carpeta del proyecto.
 4. Importar el proyecto `betca-tpv-customer-support` mediante **PyCharm**
    * **Open**, y seleccionar la carpeta del proyecto.
 5. Ejecución
@@ -64,9 +64,9 @@ betca-tpv-angular> npm install
    * Ejecución en local:
       1. BBDD. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv` & `mongodb://localhost:27017/tpv2`,
       y el motor de Postgresql: `spring.datasource.url=jdbc:postgresql://localhost:5432/tpv`
-      2. Spring. Ejecutar mediante linea de comando en ambos proyectos: `> ./mvnw clean spring-boot:run`  
+      2. Spring. Ejecutar mediante linea de comando en ambos proyectos: `> mvn spring-boot:run`  
       3. Python. Ejecutar mediante linea de comando: `> uvicorn src.main:app --reload --port 8083`
-      4. Angular. Ejecutar mediante linea de comand: `> ng serve`, o ejecución de Angular con los back-end en Heroku: `> ng serve --configuration production`
+      4. Angular. Ejecutar mediante linea de comand: `> ng serve`
       5. Navegador. Se arranca en la URL: http://localhost:4200/
 
 # :page_with_curl: Enunciado de la práctica
@@ -76,7 +76,7 @@ betca-tpv-angular> npm install
 ### 1. Requisitos de la práctica
 Los requisitos se obtiene por sorteo entre los posibles existentes: https://github.com/miw-upm/betca-tpv/wiki.   
 
-La metodología se desarrolla en el proyecto: https://github.com/miw-upm/betca-tpv/projects/1, de forma centralizada para
+La metodología se desarrolla en el proyecto: https://github.com/users/miw-upm/projects/8, de forma centralizada para
 todos las historias.
 
 La historia debe organizarse en `tareas` mas pequeñas, cada una de ella asociada a un `issue`. Asignar el Hito. 
