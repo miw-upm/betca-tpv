@@ -5,23 +5,23 @@ dos Back-ends con Spring y un Back-end con Python. El Back-end-user se desarroll
  realiza con programación reactiva y MongoDB. El Back-end-customer-support con programación síncrona y MongoDB
 
 ## Tecnologías necesarias
-`Java` `Maven` `Spring-Boot` `Reactor` `Python` `Angular` `MondoDB` `JPA` `SQL` `GitHub` `Travis-CI` `Sonarcloud` `Better Code Hub` `Heroku`
+`Java` `Maven` `Spring-Boot` `Reactor` `Angular` `MondoDB` `JPA` `SQL` `GitHub` `GitHub Actions` `Sonarcloud` `GitHub packages` `Docker` `Render`
 
 ## Estado del código
-Proyecto | GitHub - CI | Sonarcloud
--- | -- | --
-Front-end-angular | [![Angular - Tests](https://github.com/miw-upm/betca-tpv-angular/actions/workflows/angular-test-sonar.yml/badge.svg)](https://github.com/miw-upm/betca-tpv-angular/actions/workflows/angular-test-sonar.yml) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-angular&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-angular)
-Back-end-user | [![Spring User - Tests](https://github.com/miw-upm/betca-tpv-user/workflows/Spring%20User%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-user/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-user&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-user)
-Back-end-core | [![Spring Core - Tests](https://github.com/miw-upm/betca-tpv-core/workflows/Spring%20Core%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-core/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-core&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-core) 
-Back-end-customer-support | [![Python Customer Support - Tests](https://github.com/miw-upm/betca-tpv-customer-support/workflows/Python%20Customer%20Support%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-customer-support/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-customer-support&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-customer-support)
+Proyecto | GitHub - CI                                                                                                                                                                                                            | Sonarcloud
+-- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --
+Front-end-angular | [![Angular - Tests](https://github.com/miw-upm/betca-tpv-angular/actions/workflows/ci.yml/badge.svg)](https://github.com/miw-upm/betca-tpv-angular/actions/workflows/ci.yml)                                           | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-angular&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-angular)
+Back-end-user | [![Spring User - Tests](https://github.com/miw-upm/betca-tpv-user/workflows/Spring%20User%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-user/actions)                                                   | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-user&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-user)
+Back-end-core | [![Spring Core - Tests](https://github.com/miw-upm/betca-tpv-core/workflows/Spring%20Core%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-core/actions)                                                   | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-core&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-core) 
 
 ## :arrow_forward: Aplicación
-https://betca-tpv-angular.herokuapp.com/
+https://betca-tpv-angular-latest.onrender.com/
+
 ## :octocat: Repositorios
 * [Front-end-angular](https://github.com/miw-upm/betca-tpv-angular)
 * [Back-end-user](https://github.com/miw-upm/betca-tpv-user)
 * [Back-end-core](https://github.com/miw-upm/betca-tpv-core)
-* [Back-end-customer-support](https://github.com/miw-upm/betca-tpv-customer-support)
+
 
 ## :gear: Instalación del proyecto
 1. Clonar repositorios, **mediante consola**:
@@ -31,45 +31,42 @@ https://betca-tpv-angular.herokuapp.com/
 > cd <folder path>
 > git clone https://github.com/miw-upm/betca-tpv-angular
 > cd betca-tpv-angular
-betca-tpv-angular> npm install
+betca-tpv-angular> docker build -f Dockerfile-dev -t betca-tpv-angular .
+betca-tpv-angular> docker run -d -p 4200:4200 --name betca-tpv-angular-app betca-tpv-angular
+http://localhost:4200
 ```
    * betca-tpv-user
 ```sh
 > cd <folder path>
 > git clone https://github.com/miw-upm/betca-tpv-user
+> cd betca-tpv-user
+betca-tpv-user> docker compose up --build -d
+http://localhost:8081/swagger-ui.html
+http://localhost:8081/actuator/info
+
+
 ```
    * betca-tpv-core
 ```sh
 > cd <folder path>
 > git clone https://github.com/miw-upm/betca-tpv-core
+> cd betca-tpv-core
+betca-tpv-user> docker compose up --build -d
+http://localhost:8082/swagger-ui.html
+http://localhost:8082/actuator/info
 ```   
-
-   * betca-tpv-customer-support
-```sh
-> cd <folder path>
-> git clone https://github.com/miw-upm/betca-tpv-customer-support
-> cd betca-tpv-customer-support
-> venv\Scripts\activate.bat
-(venv) > pip install -r requirements.txt
-```
 
 2. Importar el proyecto `betca-tpv-angular` mediante **WebStorm** 
    * **Open**, y seleccionar la carpeta del proyecto.
 3. Importar los proyectos `betca-tpv-user` & `betca-tpv-core` mediante **IntelliJ** 
    * **Open**, y seleccionar la carpeta del proyecto.
-4. Importar el proyecto `betca-tpv-customer-support` mediante **PyCharm**
-   * **Open**, y seleccionar la carpeta del proyecto.
-5. Ejecución
-   * Ejecución de test: se utiliza MongoDB embebido y H2 embebido
-   * Ejecución en local:
-      1. BBDD. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv` & `mongodb://localhost:27017/tpv2`,
-      y el motor de Postgresql: `spring.datasource.url=jdbc:postgresql://localhost:5432/tpv`
-      2. Spring. Ejecutar mediante linea de comando en ambos proyectos: `> mvn spring-boot:run`  
-      3. Python. Ejecutar mediante linea de comando: `> uvicorn src.main:app --reload --port 8083`
-      4. Angular. Ejecutar mediante linea de comand: `> ng serve`
-      5. Navegador. Se arranca en la URL: http://localhost:4200/
 
 # :page_with_curl: Enunciado de la práctica
+> ## A. Opción TFM con Spring
+> La practica consiste en presentar el principio del proyecto (User + 2 modelos) con CI & CD
+> **Tecnología obligatoria: Back-end con _Spring_ & Front-end, BBDD y Deploy de cualquier tecnología y Host**
+> 
+## B. Opción TPV
 > La practica consiste en ampliar de forma colaborativa una aplicación web: TPV.  
 > **NOTA. Todo el software deberá estar en ingles.**
 
@@ -154,8 +151,8 @@ Indicar como texto en la subida:
 * Valor del nombre que aparece en los commits del autor.
 * Número del último commit y fecha del mismo (dÍa-hora).
 * Tiempo total estimado, tiempo total real utilizado.
-* Número de líneas de código: Angular & Spring.
-* Producción: número de líneas/hora: Angular & Spring.
+* Número de líneas de código de Angular & Nª de Spring.
+* Producción: número de líneas/hora de Angular & líneas/hora de Spring.
 
 # :book: Documentación del proyecto
 > Este proyecto es la práctica TPV desarrollada de forma colaborativa por todos los alumnos. Se parte de la versión `core`,
