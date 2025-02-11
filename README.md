@@ -62,28 +62,29 @@ http://localhost:8082/actuator/info
    * **Open**, y seleccionar la carpeta del proyecto.
 
 # :page_with_curl: Enunciado de la práctica
-> ## A. Opción TFM con Spring
-> La practica consiste en presentar el principio del proyecto (User + 2 modelos) con CI & CD
-> **Tecnología obligatoria: Back-end con _Spring_ & Front-end, BBDD y Deploy de cualquier tecnología y Host**
+## A. Opción TFM con Spring
+> La practica consiste en presentar el principio del proyecto (User + 2 modelos) con **CI & CD**. Deberá tener la funcionalidad completa de manejo de **User: registrar, logearse, manejar el perfil y opcionalmente recuperar la contraseña**.  
+> **Tecnología obligatoria: Back-end con _Spring_ & resto libre.**
 > 
 ## B. Opción TPV
-> La practica consiste en ampliar de forma colaborativa una aplicación web: TPV.  
+> La practica consiste en ampliar de forma colaborativa una aplicación web: **TPV**.  
 > **NOTA. Todo el software deberá estar en ingles.**
 
 ### 1. Requisitos de la práctica
-Los requisitos se obtiene por sorteo entre los posibles existentes: https://github.com/miw-upm/betca-tpv/wiki.   
+Los requisitos se obtiene aleatoriamente entre los posibles existentes: https://github.com/miw-upm/betca-tpv/wiki.   
 
 La metodología se desarrolla en el proyecto: https://github.com/users/miw-upm/projects/8, de forma centralizada para
 todos las historias.
+> IMPORTANTE: recordar que en los mensajes de los comits se debe añadir: `miw-upm/betca-tpv#xxx`.  
 
 La historia debe organizarse en `tareas` mas pequeñas, cada una de ella asociada a un `issue`. Asignar el Hito. 
-Justo antes de empezar una tarea, asignar la estimación de tiempo: puntos. Al finalizar una tarea, asignarle el tiempo
-consumido y cerrarla.
+Justo antes de empezar una tarea, asignar la estimación de tiempo: puntos y el typo de tarea. Al finalizar una tarea, asignarle el tiempo
+consumido y cerrarla. Una tarea puede incluir tocar parte de varios repositorios: angular y core, pero se maneja el mismo número de rama en ambos.  
 
-Utilizar un flujo de trabajo ramificado, visto en IWVG: Ecosistema o APAW. Acordaros de incluir #? 
-con el número del issue en los mensajes de los commits.
+Utilizar un flujo de trabajo ramificado, visto en IWVG: Ecosistema o APAW.  
 
 ### 2. Sprint 1: Interfaz de Usuario
+> Se debe cerrar en los primero 7 dias.   
 El primer `issue` es realizar el **Interfaz de Usuario** en Angular, asociarlo al hito `Evaluación: Interfaz de Usuario`, 
 con valores mock y sin atacar a los API.   
 Una vez finalizado, y antes de cerrarlo, se debe avisar al profesor mediante Slack, en un hilo privado, 
@@ -110,12 +111,12 @@ Realizar una **estimación temporal** y **anotarlo en la tarea**.
 
 # :white_check_mark: Criterios de evaluación
 * Errores típicos
-   * En el cuerpo de las peticiones/respuestas no pueden viajar tipos nativos.
-   * Las peticiones, independiente del tipo (recursos, servicios, persistencias), se colocan en los tipos devueltos.
-   * Filosofía de los **`find***By***`**.
-   * Los métodos de un objeto, normalmente leen o alteran el estado.
-   * No se debe delegar en la persistencia toda la lógica de negocio. La persistencia debiera realizar sólo funciones básicas de sus entidades asociadas.
-   * En el modelo del dominio, normalmente se tienen que distinguir de alguna manera los elementos, y debe ser independiente a la **id**, ya que esta es de la capa de persistencia.
+   * **En el cuerpo de las peticiones/respuestas no pueden viajar tipos nativos**.
+   * **Las peticiones, independiente del tipo (recursos, servicios, persistencias), se colocan en los tipos devueltos**.
+   * **No se debe delegar en la persistencia toda la lógica de negocio. La persistencia debiera realizar sólo funciones básicas de sus entidades asociadas.**  
+   * **Filosofía de los _`find***By***`_**.
+   * **Los métodos de un objeto, normalmente leen o alteran el estado.**
+   * **En el modelo del dominio, normalmente se tienen que distinguir de alguna manera los objetos, aunque no es obligatorio, y debe ser independiente a la _id_, ya que esta es de la capa de persistencia.**
 * Uso correcto del flujo de trabajo ramificado. **Hasta -2 ptos**. Los **warning** son avisos sin perdida de puntos.
 * Adecuación de la temporalidad de desarrollo según el enunciado. **Hasta -4 ptos**.
 * No se puede realizar un **findAll** y luego filtrar por código, se debe utilizar adecuadamente las **queries**.
@@ -162,7 +163,7 @@ Permite la creación e impresión del recibo ticket o factura de venta —con lo
 actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la base de datos... Además tiene la parte de venta on-line.
 
 ## Interfaz de Usuario
-* [App TPV desplegada en Heroku](https://betca-tpv-angular.herokuapp.com)
+* [App TPV desplegada en Render](https://betca-tpv-angular-lastest.onrender.com)
 
 ![](./docs/betca-tpv.png)
 
