@@ -172,8 +172,6 @@ actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la ba
 ![](docs/front-end-folders.png)
 ![](docs/front-end-templates.png)
 ![](docs/front-end-templates-shop.png)
-### Módulos
-![](docs/front-end-modules.png)
 ### Seguridad
 ![](./docs/front-end-security.png)
 ![](./docs/front-end-routing-security.png)
@@ -463,7 +461,4 @@ Para `Sonarcloud`, se debe crear el fichero: `sonar-project.properties`.
 ### Paquetes
 ![](docs/back-end-core-packages.png)
 
-## Back-end: Customer Support
-> Python mediante Arquitectura Seudo-Hexagonal
-### Paquetes
-![](docs/back-end-customer-support-packages.png)
+
