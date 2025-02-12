@@ -283,49 +283,86 @@ export class ArticlesComponent {
 
 ---
 
-### Anexo. Preparación del proyecto y ecosistema
+# Preparación y actualización del proyecto de Angular con Despliegue Continuo
 
-#### Instalaciones de herramientas
+## Instalaciones de herramientas
 1. Desinstalar node & borrado de carpetas, si procede:
    * C:\Users\*\AppData\Roaming\npm
    * C:\Users\*\AppData\Roaming\npm-cache
 
-2. Instalar Node, todo estándar
-   * node  --version  ?`v16.13.0`
-   * npm –version ?`8.1.4`
-   * npm install -g npm@8.1.4
+2. Instalar Node, todo estándar (viene con npm)
+   * node  --version  ?`v22.13.1`
+   * npm –version ?`10.92.2`
+   * npm install -g npm@latest `11.1.0`
    * npm list ?muestra todas las dependencias instaladas
    * npm list &lt;dependence> ?muestra la dependencia especificada
-   * npm update –g
    
 3. Instalar Angular CLI
    * npm install -g @angular/cli 
-   * ng –-version ?`13.0.3`
+   * ng –-version ?`19.1.6`
 
 4. Crear una nueva aplicación
-   * ng new &lt;app>. Routing:Y & CSS
+   * ng new &lt;app>. CSS & N (SSR y SSG)
 
 5. Ejecutar aplicación:
    * cd &lt;app>
    * ng serve
    * Navegador: http://localhost:4200/
+
+6. Instalar Material
+   * ng add @angular/material  ?(Tema, Yes, Yes & enable animations)
+   * npm list @angular/material ?`19.1.3`
    
-6. Instalar express:
-   * npm i express  ?i:install
-   * npm list express ?`4.17.1`
-   * Crear el fichero `server.js`
-   * ng build
-   * node server.js ?arrancar sobre express
-   
-7. Instalar Material + Flex
-   * ng add @angular/material  ?(Indigo/Pink, Yes & Yes)
-   * npm i @angular/flex-layout
-   * npm list @angular/material ?`13.0.2`
-   * npm list @angular/flex-layout ?`13.0.0-beta.36`
-   
-8. Instalar Jwt
+7. Instalar Jwt
    * npm i @auth0/angular-jwt
-   * npm list @auth0/angular-jwt ?`5.0.2`
+   * npm list @auth0/angular-jwt ?`5.2.0`
+
+8. Para producción, puede ser una buena solución: nginx  (https://nginx.org/es) un servidor de codigo abierto de archivos estáticos
+    * Necesita de un fichero de configuración en el raiz del proyecto: 'nginx.config'
+
+#### Versionado: **nginx.config**
+```txt
+server {
+  listen 80;
+  server_name localhost;
+  root /usr/share/nginx/html;
+  index index.html;
+  location / {
+    try_files $uri /index.html;
+  }
+  error_page 404 /index.html;
+  # Compresión Gzip
+  gzip on;
+  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+  gzip_vary on;
+}
+```
+
+8. Otra solución para producción puede ser express sobre node, es mas pesado...
+  * npm i express
+  * npm list express ?`4.21.2`
+  * Crear el fichero `server.js`
+  * ng build --configuration production
+  * node server ?arrancar express
+  * necesita del fichero `node.js` en el raiz del proyecto
+
+####  **node.js**
+```javascript
+const express = require('express');
+const http = require('http');
+const path = require('path');
+const app = express();
+const server = http.createServer(app);
+const PATH_PROJECT = path.join(__dirname, 'dist', 'betca-tpv-angular','browser');
+app.use(express.static(PATH_PROJECT));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(PATH_PROJECT, 'index.html'));
+});
+const PORT = process.env.PORT || 8080;
+server.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en: http://localhost:${PORT}`);
+});
+```
 
 Otros comandos
 * `>ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -338,7 +375,7 @@ Otros comandos
 ```json
 {
   "name": "betca-tpv-angular",
-  "version": "4.4.0-SNAPSHOT",
+  "version": "4.10.0-SNAPSHOT", 
 }
 ```
 `~: versión mas cercana posible, ^: versión compatible mas alta`
@@ -361,8 +398,7 @@ export const environment = {
   NAME: pkg.name,
   VERSION: pkg.version,
   REST_USER: 'http://localhost:8081',
-  REST_CORE: 'http://localhost:8082',
-  REST_CUSTOMER_SUPPORT: 'http://localhost:8083'
+  REST_CORE: 'http://localhost:8082'
 };
 ```
 `enviroments.prod.ts`
@@ -372,9 +408,8 @@ export const environment = {
   production: true,
   NAME: pkg.name,
   VERSION: pkg.version,
-  REST_USER: 'https://betca-tpv-user.herokuapp.com',
-  REST_CORE: 'https://betca-tpv-core.herokuapp.com',
-  REST_CUSTOMER_SUPPORT: 'https://betca-tpv-customer-support.herokuapp.com'
+  REST_USER: 'https://betca-tpv-user-latest.onrender.com',
+  REST_CORE: 'https://betca-tpv-core-latest.onrender.com'
 ```
 ### Rutas absolutas: @*
 
@@ -395,9 +430,9 @@ En el fichero `tsconfig`, habilitar las opciones de compilación:
 ```json
 {
   "scripts": {
-    "heroku-postbuild": "ng build --prod",
-    "build-prod": "ng build --prod",
-    "start": "node server.js"
+    "build-prod": "ng build --configuration production",
+    "test-ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "start": "ng serve --host 0.0.0.0 --port 4200"
   }
 }
 ```
@@ -417,33 +452,16 @@ Renombrar las `long living branch: (master|develop|release-).*`
 3. Se deben establecer la contraseña: `secrets.SONAR_TOKEN` en en proyecto de GitHub, `settings/Secrets`
 Para `Sonarcloud`, se debe crear el fichero: `sonar-project.properties`.
 
-Conexión con **Heroku**:
-1. Crear la aplicación en Heroku.
-2. Se deben establecer la contraseña: `secrets.HEROKU_API_KEY` en en proyecto de GitHub.   
-3. Deben existir los scripts para construcción y arranque con `express`:
-```json
-{
-  "scripts": {
-    "heroku-postbuild": "ng build --prod",
-    "start": "node server.js"
-  }
-}
-```
-
 ## Back-end: User
 > Spring mediante Arquitectura por Capas
 
 ### Paquetes
 ![](docs/back-end-user-packages.png)
-### Clases
-![](docs/back-end-user-classes.png)
  
 ## Back-end: Core
 > Spring mediante Arquitectura Hexagonal
 ### Paquetes
 ![](docs/back-end-core-packages.png)
-### Clases
-![](docs/back-end-core-classes.png)
 
 ## Back-end: Customer Support
 > Python mediante Arquitectura Seudo-Hexagonal
