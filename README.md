@@ -170,6 +170,7 @@ actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la ba
 ## Front-end: Angular
 ### Carpetas
 ![](docs/front-end-folders.png)
+![](docs/front-end-folders2.png)
 ![](docs/front-end-templates.png)
 ![](docs/front-end-templates-shop.png)
 ### Seguridad
