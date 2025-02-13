@@ -419,7 +419,7 @@ En el fichero `tsconfig`, habilitar las opciones de compilación:
     "baseUrl": "src",
     "paths": {
       "@env": ["environments/environment"],
-      "@shared/*": ["app/shared/*"],
+      "@common/*": ["app/common/*"],
       "@core/*": ["app/core/*"]
     }
   }
